@@ -30,7 +30,7 @@
                         label = "pstore_reserve_mem";
                 };
 
-                splash_region@83000000 {
+                splash_region@83000000 { /* Give this region to mdss_fb0 */
                         status = "disabled";
                 };
 
@@ -145,10 +145,12 @@
 	qcom,mdss-pref-prim-intf = "dsi";
 	qcom,vbif-settings = <0x4 0x1>, <0xd8 0x707>, <0x124 0x3>;
 
-	/* mdss_fb0: qcom,mdss_fb_primary {
+	mdss_fb0: qcom,mdss_fb_primary {
+		/* Ketut P. Kumajaya: For old bootloader, old splash image */
+		/* Both recovery and bootanimation framebuffer need this */
 		qcom,memblock-reserve = <0x83200000 0xfa0000>;
 		qcom,mdss-fb-splash-logo-enabled;
-	}; */
+	};
 };
 
 &pmx_mdss {
